@@ -3,11 +3,12 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const host = window.location.host;
   const navigate = useNavigate();
   const fetchUser = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:5001/auth/home", {
+      const response = await axios.get(`http://${host}/auth//home`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -13,13 +13,11 @@ const Register = () => {
   const handleChanges = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+  const host = window.location.host;
   const handleSumbit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:5001/auth/register",
-        values
-      );
+      const response = await axios.post(`http://${host}/auth/register`, values);
       if (response.status === 201) {
         navigate("/login");
       }
